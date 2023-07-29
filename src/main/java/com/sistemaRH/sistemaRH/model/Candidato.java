@@ -3,6 +3,7 @@ package com.sistemaRH.sistemaRH.model;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.validation.constraints.NotEmpty;
@@ -12,7 +13,7 @@ public class Candidato {
 	
 	
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	
 	@Column(unique = true)
