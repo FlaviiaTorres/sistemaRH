@@ -10,6 +10,7 @@
 	<title>App RH</title>
 
 	<!-- Bootstrap -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 	<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
 	<!-- HTML5 shim e Respond.js para suporte no IE8 de elementos HTML5 e media queries -->
@@ -30,19 +31,19 @@
 
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 			<div class="container-fluid">
-				<a class="navbar-brand" href="#">App RH</a>
+				<a class="navbar-brand" href="/">App RH</a>
 				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
 					aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon"></span>
 				</button>
 				<div class="collapse navbar-collapse" id="navbarNav">
 					<ul class="navbar-nav">
-						<li class="nav-item"><a class="nav-link active" aria-current="page" href="#">Home</a></li>
+						<li class="nav-item"><a class="nav-link active" aria-current="page" href="">Home</a></li>
 
-						<li class="nav-item"><a class="nav-link" href="#">
+						<li class="nav-item"><a class="nav-link" href="/vagas">
 								<< Listar Vagas>>
 							</a></li>
-						<li class="nav-item"><a class="nav-link" href="#">
+						<li class="nav-item"><a class="nav-link" href="/cadastrarVaga">
 								<< Cadastrar Vaga>>
 							</a></li>
 
@@ -56,21 +57,21 @@
 	<div class="container">
 
 		<h1>Detalhes da vaga:</h1>
-		<div class="container">
+		<div th:each="vaga : ${vaga}" class="container">
 
 			<br>
 
 			<p>
-				<b>Vaga:</b> <span></span>
+				<b>Vaga:</b> <span th:text="${vaga.nome}"></span>
 			</p>
 			<p>
-				<b>Descrição do cargo:</b> <span></span>
+				<b>Descrição do cargo:</b> <span th:text="${vaga.descricao}"></span>
 			</p>
 			<p>
-				<b>Expira em:</b> <span></span>
+				<b>Expira em:</b> <span th:text="${vaga.data}"></span>
 			</p>
 			<p>
-				<b>Salário:</b> R$ <span></span>
+				<b>Salário:</b> R$ <span th:text="${vaga.salario}"></span>
 			</p>
 
 			<br> <br>
@@ -80,10 +81,12 @@
 
 
 			<h2>Cadastrar candidato:</h2>
+			
+			<th:block th:include="mensagemValidacao"></th:block>
 
 			<br>
 
-			<form method="post">
+			<form method="post" th:object="${candidato}">
 
 				<div class="form-group">
 					<div class="row">
@@ -133,11 +136,11 @@
 			</thead>
 			<tbody>
 
-				<tr>
-					<td><span></span></td>
-					<td><span></span></td>
-					<td><span></span></td>
-					<td><a class="waves-effect waves-light btn-small" href="#"><button type="button"
+				<tr th:each="candidato : ${candidatos}">
+					<td><span th:text="${candidato.nomeCandidato}"></span></td>
+					<td><span th:text="${candidato.rg}"></span></td>
+					<td><span th:text="${candidato.email}"></span></td>
+					<td><a class="waves-effect waves-light btn-small" th:href="${(#mvc.url('VC#deletarCandidato').arg(0, candidato.rg)).build()}"><button type="button"
 								class="btn btn-danger">Excluir</button></a></td>
 				</tr>
 
