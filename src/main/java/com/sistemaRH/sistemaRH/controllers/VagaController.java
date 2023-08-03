@@ -17,7 +17,7 @@ import com.sistemaRH.sistemaRH.repository.VagaRepository;
 import jakarta.validation.Valid;
 
 @Controller
-public class vagaController {
+public class VagaController {
 	
 	@Autowired
 	private VagaRepository vr;

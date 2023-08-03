@@ -16,7 +16,7 @@ public class dataConfiguration {
 	public DataSource dataSource() {
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
 		dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
-		dataSource.setUrl("jdbc:mysql://localhost:3306/sistemarh?useTimezone=true&serverTimezone=UTC");
+		dataSource.setUrl("jdbc:mysql://localhost:3306/AppRH?useTimezone=true&serverTimezone=UTC");
 		dataSource.setUsername("root");
 		dataSource.setPassword("admin12..");
 		return dataSource;
@@ -27,7 +27,7 @@ public class dataConfiguration {
 		adapter.setDatabase(Database.MYSQL);
 		adapter.setShowSql(true);
 		adapter.setGenerateDdl(true);
-		adapter.setDatabasePlatform("org.hibernate.dialect.MariaDBDialect");
+		adapter.setDatabasePlatform("org.hibernate.dialect.MySQLDialect");
 		adapter.setPrepareConnection(true);
 		return adapter;
 	}

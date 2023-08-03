@@ -7,7 +7,7 @@ import org.springframework.data.repository.CrudRepository;
 import com.sistemaRH.sistemaRH.model.Candidato;
 import com.sistemaRH.sistemaRH.model.Vaga;
 
-public interface CandidatoRepository extends CrudRepository<Candidato, String> {
+public interface CandidatoRepository extends CrudRepository<Candidato, Long> {
 	
 	Iterable<Candidato>findByVaga(Vaga vaga);
 	
